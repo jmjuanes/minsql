@@ -67,7 +67,7 @@ db.Insert('test', {"id": 1, "name": "John", "email": "john@me.com"}, function(er
 
 Is equivalent to running `INSERT INTO test (id, name, email) VALUES (1, "John", "john@me.com")`.
 
-In version `0.2.0` and higher, you can insert multiple values in one query using an array. For example:
+In version `0.2.0` and higher, you can insert multiple rows in one query using an array. For example:
 
 ```javascript
 var values = [{"id": 1, "name": "John"}, {"id": 2, "name": "Kevin"}];
