@@ -1,10 +1,10 @@
 {
   "name": "minsql",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimal and easy MySQL driver for Node.JS",
   "main": "index.js",
   "repository": {"type": "git", "url": "git://github.com/jmjuanes/minsql.git"},
-  "keywords": ["mysql", "sql", "minimal", "easy", "driver"],
+  "keywords": ["mysql", "sql", "minimal", "easy", "driver", "jmjuanes"],
   "files": ["LICENSE", "CHANGELOG.md", "README.md", "index.js", "lib/"],
   "author": "Josemi Juanes <jmjuanes@outlook.com>",
   "license": "MIT",

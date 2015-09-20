@@ -1,11 +1,11 @@
-Release notes 0.1.0
+Release notes 0.2.0
 
 # minSQL
 
 Minimal and easy MySQL driver for Node.JS.
 
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
+[![npm](https://img.shields.io/npm/v/minsql.svg?style=flat-square)](https://www.npmjs.com/package/minsql)
+[![npm](https://img.shields.io/npm/dt/minsql.svg?style=flat-square)](https://www.npmjs.com/package/minsql)
 
 
 ## Installation
@@ -67,6 +67,16 @@ db.Insert('test', {"id": 1, "name": "John", "email": "john@me.com"}, function(er
 
 Is equivalent to running `INSERT INTO test (id, name, email) VALUES (1, "John", "john@me.com")`.
 
+In version `0.2.0` and higher, you can insert multiple values in one query using an array. For example:
+
+```javascript
+var values = [{"id": 1, "name": "John"}, {"id": 2, "name": "Kevin"}];
+
+db.Insert('test', values, function(error){  });
+```
+
+Is equivalent to running `INSERT INTO test (id, name) VALUES (1, "John"),(2, "Kevin")`.
+
 
 ### Update(table, set, where, callback)
 
@@ -93,14 +103,7 @@ Is equivalent to running `DELETE FROM test WHERE id=1`.
 
 
 
-
 ## License
 
 **minSQL** is under the [MIT](LICENSE) license.
 
-
-
-[npm-image]: https://img.shields.io/npm/v/minsql.svg
-[npm-url]: https://npmjs.org/package/minsql
-[downloads-image]: https://img.shields.io/npm/dm/minsql.svg
-[downloads-url]: https://npmjs.org/package/minsql
