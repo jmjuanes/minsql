@@ -1,4 +1,4 @@
-Release notes 0.2.0
+Release notes 0.3.0
 
 # minSQL
 
@@ -36,6 +36,39 @@ db.Connect('localhost', 'myuser', 'mypass', 'test');
 ### Close()
 
 Close the connection to the database.
+
+### CreateTable(table, def, callback)
+
+Create a new table called `table`. The `def` argument must be an JSON object with the next structure:
+
+- **cols**: an object with the cols for your new table. Each element must have the structure `"COL_NAME" : "COL_ATTR"`.
+- **primary**: string with the PRIMARY KEY of your new table.
+- **foreign**: an object with the FOREIGN KEYS for your table.
+
+For example:
+
+```json
+{
+	"cols": {"id": "int(11) NOT NULL", "name": "varchar(255) NOT NULL", "group": "int(2) NOT NULL", },
+	"primary": "id",
+	"foreign": {"group": "groups(proup_id)"}
+}
+```
+
+This will generate the next SQL definition:
+
+```sql
+id int(11) NOT NULL,
+name varchar(255) NOT NULL,
+group int(2) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (group) REFERENCES groups(group_id)
+```
+
+
+### DropTable(table, callback)
+
+Drop the `table` table.
 
 
 ### Select(table, where, callback)
@@ -80,7 +113,7 @@ Is equivalent to running `INSERT INTO test (id, name) VALUES (1, "John"),(2, "Ke
 
 ### Update(table, set, where, callback)
 
-Update from `table` the `set` cols from the rows that satisfy the `where` condition. 
+Update from `table` the `set` cols from the rows that satisfy the `where` condition.
 
 Example:
 
@@ -106,4 +139,3 @@ Is equivalent to running `DELETE FROM test WHERE id=1`.
 ## License
 
 **minSQL** is under the [MIT](LICENSE) license.
-
