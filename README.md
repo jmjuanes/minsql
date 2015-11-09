@@ -86,7 +86,7 @@ db.Select('test', {"key1":"value1", "key2"="value2"}, function(err, results){ ..
 Is equivalent to running `SELECT * FROM test WHERE key1="value1" AND key2="value2"` on MySQL.
 
 
-**IMPORTANT NOTE**: On version `0.4.1`, the `where` argument accepts an string as a WHERE condition, for make a more complex query. For example, if you want to select only the rows that `key1 <= 10` and `key2 > 0`, you can do:
+**IMPORTANT NOTE**: On version `0.4.1`, the `where` argument accepts a string as a WHERE condition, for make a more complex query. For example, if you want to select only the rows that satisfy `key1 <= 10` and `key2 > 0`, you can do:
 
 ```javascript
 //Generate the where as a string
