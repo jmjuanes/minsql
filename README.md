@@ -80,10 +80,21 @@ Select data from `table` with `where` conditions. The inputs arguments must be:
 For example, runnig:
 
 ```javascript
-db.Select('test', {"key1":"value1", "key2"="value2"}, function(err, results){});
+db.Select('test', {"key1":"value1", "key2"="value2"}, function(err, results){ ... });
 ```
 
 Is equivalent to running `SELECT * FROM test WHERE key1="value1" AND key2="value2"` on MySQL.
+
+
+**IMPORTANT NOTE**: On version `0.4.1`, the `where` argument accepts an string as a WHERE condition, for make a more complex query. For example, if you want to select only the rows that `key1 <= 10` and `key2 > 0`, you can do:
+
+```javascript
+//Generate the where as a string
+var where = 'key1 <= 10 AND key2 > 0';
+
+//Get the results
+db.Select('test', where, function(err, results){ ... });
+```
 
 
 ### Insert(table, values, callback)
@@ -103,7 +114,7 @@ In version `0.2.0` and higher, you can insert multiple rows in one query using a
 ```javascript
 var values = [{"id": 1, "name": "John"}, {"id": 2, "name": "Kevin"}];
 
-db.Insert('test', values, function(error){  });
+db.Insert('test', values, function(error){ ... });
 ```
 
 Is equivalent to running `INSERT INTO test (id, name) VALUES (1, "John"),(2, "Kevin")`.
@@ -116,7 +127,7 @@ Update from `table` the `set` cols from the rows that satisfy the `where` condit
 Example:
 
 ```javascript
-db.Update('test', {"name": "Smith", "email": "smith@me.com"}, {"id": 1}, function(error){ });
+db.Update('test', {"name": "Smith", "email": "smith@me.com"}, {"id": 1}, function(error){ ... });
 ```
 
 Is equivalent to running `UPDATE test SET name="Smith" , email="smith@me.com" WHERE id=1`.
@@ -127,17 +138,17 @@ Is equivalent to running `UPDATE test SET name="Smith" , email="smith@me.com" WH
 Delete rows from `table` that satisfy the `where` condition. For example:
 
 ```javascript
-db.Delete('test', {"id": 1}, function(error){  });
+db.Delete('test', {"id": 1}, function(error){ ... });
 ```
 
 Is equivalent to running `DELETE FROM test WHERE id=1`.
 
 ### Query(sql, callback)
 
-Do a simple query, and get the results with the callback.
+Do a more complex query, and get the results with the callback.
 
 ```javascript
-db.Query('SELECT * FROM test WHERE id < 10', function(error, results) { ... });
+db.Query('SELECT * FROM test WHERE id < 10 LIMIT 5', function(error, results) { ... });
 ```
 
 
