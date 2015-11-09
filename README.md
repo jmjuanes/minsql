@@ -1,5 +1,3 @@
-Release notes 0.3.0
-
 # minSQL
 
 Minimal and easy MySQL driver for Node.JS.
@@ -134,6 +132,13 @@ db.Delete('test', {"id": 1}, function(error){  });
 
 Is equivalent to running `DELETE FROM test WHERE id=1`.
 
+### Query(sql, callback)
+
+Do a simple query, and get the results with the callback.
+
+```javascript
+db.Query('SELECT * FROM test WHERE id < 10', function(error, results) { ... });
+```
 
 
 ## License

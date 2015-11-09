@@ -1,5 +1,8 @@
 # ChangeLog
 
+### v0.4.0 (November 9, 2015)
+- Added `Query` command.
+
 ### v0.3.0 (October 2, 2015)
 - Added `CreateTable` and `DropTable` commands.
 
